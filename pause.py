@@ -20,7 +20,7 @@ def on_enter(event,canvas):
 
 def on_leave(event,canvas):
     global is_left
-    is_left = 0 <= event.x <= canvas.winfo_width() // 2 - 30
+    is_left =  event.x <= canvas.winfo_width() // 2 - 30
     if is_left:
         s.wordToSegmentDisplay(canvas,"pause",10,25, "green" )
     else:
@@ -67,7 +67,7 @@ def on_enter2(event,canvas):
 
 def on_leave2(event,canvas):
     global is_left
-    is_left = 0 <= event.x <= canvas.winfo_width() // 2 - 30
+    is_left =  event.x <= canvas.winfo_width() // 2 - 30
     if is_left:
         s.wordToSegmentDisplay(canvas,"start",10,25, "green" )
     else:
@@ -80,8 +80,8 @@ def on_motion2(event,canvas):
     if new_is_left != is_left:
         is_left = new_is_left
         if not is_left:
-            s.wordToSegmentDisplay(canvas,"start",280,25, "red")
-            s.wordToSegmentDisplay(canvas,"stop",10,25, "green" )
+            s.wordToSegmentDisplay(canvas,"stop",280,25, "red")
+            s.wordToSegmentDisplay(canvas,"start",10,25, "green" )
         else:
             s.wordToSegmentDisplay(canvas,"start",10,25, "red")
             s.wordToSegmentDisplay(canvas,"stop",280,25,"green")
