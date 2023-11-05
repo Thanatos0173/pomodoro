@@ -4,7 +4,7 @@ import time
 import segments as s
 import sounds as so
 import pause as p
-
+import pygame
 
 
 
@@ -99,12 +99,19 @@ canvas3 = tk.Canvas(window,width=570,height=110)
 canvas3.config(bg="#000000")
 canvas4 = tk.Canvas(window,width=570,height=110)
 canvas4.config(bg="#000000")
+slider = tk.Scale(window,from_=0, to=100,orient=tk.HORIZONTAL,command=lambda value:pygame.mixer.music.set_volume(int(value)/100))
+slider.config(bg="#000000",fg="green",troughcolor="#000000")
+slider.set(50)
+
+
 
 so.play_sound_1()
 canvas2.pack()
 canvas.pack()
 canvas3.pack()
 canvas4.pack()
+slider.pack(side=tk.BOTTOM,anchor=tk.SE)
+tk.Label(text="Volume",padx=30,bg="#000000",fg="green").pack(side=tk.BOTTOM,anchor=tk.SE)
 update3(window,canvas3)
 update4(window,canvas4)
 
