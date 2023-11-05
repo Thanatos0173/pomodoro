@@ -9,10 +9,6 @@ import pause as p
 
 
 
-
-
-
-
 def update(window,canvas,time):
     canvas.delete("all")
     s.seven_segment_display_digit(canvas,30,50,s.digitToTable(time[-6]))
@@ -45,6 +41,13 @@ def update3(window,canvas):
 
     window.update()
 
+def update4(window,canvas):
+    canvas.delete("all")
+    s.wordToSegmentDisplay(canvas,"start",10,25, "green")
+    s.wordToSegmentDisplay(canvas,"stop",280,25,"green")
+
+    window.update()
+
 
 
 def clockwatch(window,duration,canvas,isPaused):
@@ -72,31 +75,7 @@ def clockwatch(window,duration,canvas,isPaused):
 
 
 
-
-
-def start():
-    isPaused = [False] # To be able to edit isPaused inside of function.
-
-    window = tk.Tk()
-    window.config(bg="#000000")
-    canvas = tk.Canvas(window,width=570,height=200)
-    canvas.config(bg="#000000")
-    canvas2 = tk.Canvas(window,width=570,height=110)
-    canvas2.config(bg="#000000")
-    canvas3 = tk.Canvas(window,width=570,height=110)
-    canvas3.config(bg="#000000")
-
-    so.play_sound_1()
-    canvas2.pack()
-    canvas.pack()
-    canvas3.pack()
-    update3(window,canvas3)
-
-    canvas3.bind('<Enter>', lambda event: p.on_enter(event,canvas3))
-    canvas3.bind('<Leave>', lambda event: p.on_leave(event,canvas3))
-    canvas3.bind('<Motion>', lambda event: p.on_motion(event,canvas3))
-    canvas3.bind('<Button-1>', lambda event: p.on_click(event,window, canvas3,isPaused))
-
+def start(window,canvas,isPaused):
     while True:
         for i in range(3):
             update2(window,canvas2,True)
@@ -107,3 +86,34 @@ def start():
         clockwatch(window,25*60,canvas,isPaused)
         update2(window,canvas2,False)
         clockwatch(window,15*60,canvas,isPaused)
+
+isPaused = [False] # To be able to edit isPaused inside of function.
+
+window = tk.Tk()
+window.config(bg="#000000")
+canvas = tk.Canvas(window,width=570,height=200)
+canvas.config(bg="#000000")
+canvas2 = tk.Canvas(window,width=570,height=110)
+canvas2.config(bg="#000000")
+canvas3 = tk.Canvas(window,width=570,height=110)
+canvas3.config(bg="#000000")
+canvas4 = tk.Canvas(window,width=570,height=110)
+canvas4.config(bg="#000000")
+
+so.play_sound_1()
+canvas2.pack()
+canvas.pack()
+canvas3.pack()
+canvas4.pack()
+update3(window,canvas3)
+update4(window,canvas4)
+
+canvas3.bind('<Enter>', lambda event: p.on_enter(event,canvas3))
+canvas3.bind('<Leave>', lambda event: p.on_leave(event,canvas3))
+canvas3.bind('<Motion>', lambda event: p.on_motion(event,canvas3))
+canvas3.bind('<Button-1>', lambda event: p.on_click(event,window, canvas3,isPaused))
+
+canvas4.bind('<Enter>', lambda event: p.on_enter2(event,canvas4))
+canvas4.bind('<Leave>', lambda event: p.on_leave2(event,canvas4))
+canvas4.bind('<Motion>', lambda event: p.on_motion2(event,canvas4))
+canvas4.bind('<Button-1>', lambda event: p.on_click2(event,window, canvas4,isPaused,start,canvas))
