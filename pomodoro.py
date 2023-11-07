@@ -58,6 +58,7 @@ def clockwatch(window,duration,canvas,isPaused):
         window.update()
         if current_second != last_second: # A second elapsed
             last_second = current_second
+
             if not isPaused[0]:
                 currentTime -= 0.01
                 listToAdd = s.timeToSegmentConvertable(int(currentTime))
@@ -68,6 +69,16 @@ def clockwatch(window,duration,canvas,isPaused):
                     listToAdd.append(str(round(currentTime,2))[-1])
                     listToAdd.append("0")
                 update(window,canvas,listToAdd)
+            if isPaused[0]:#Flashing
+                listToAdd = s.timeToSegmentConvertable(int(currentTime))
+                if(len(str(round(currentTime,2)).split(".")[-1]) == 2):
+                    listToAdd.append(str(round(currentTime,2))[-2])
+                    listToAdd.append(str(round(currentTime,2))[-1])
+                else:
+                    listToAdd.append(str(round(currentTime,2))[-1])
+                    listToAdd.append("0")
+                if int(last_second*1.5) % 2 == 0 : canvas.delete("all")
+                else: update(window,canvas,listToAdd)
             if currentTime <= 0:
                 so.play_sound_2()
                 return
