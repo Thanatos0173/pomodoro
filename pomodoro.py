@@ -1,11 +1,10 @@
-import random
 import tkinter as tk
 import time
 import segments as s
 import sounds as so
 import pause as p
 import pygame
-
+import slider as sl
 
 
 
@@ -77,14 +76,16 @@ def clockwatch(window,duration,canvas,isPaused):
                 else:
                     listToAdd.append(str(round(currentTime,2))[-1])
                     listToAdd.append("0")
-                if int(last_second*1.5) % 2 == 0 : canvas.delete("all")
+                if int(last_second*2) % 2 == 0 : canvas.delete("all")
                 else: update(window,canvas,listToAdd)
             if currentTime <= 0:
                 so.play_sound_2()
                 return
 
 
-
+def editSoundVolume(label, value):
+    pygame.mixer.music.set_volume(value)
+    label.config(text=f"Current volume  {value}")
 
 def start(window,canvas,isPaused):
     while True:
@@ -110,9 +111,12 @@ canvas3 = tk.Canvas(window,width=570,height=110)
 canvas3.config(bg="#000000")
 canvas4 = tk.Canvas(window,width=570,height=110)
 canvas4.config(bg="#000000")
-slider = tk.Scale(window,from_=0, to=100,orient=tk.HORIZONTAL,command=lambda value:pygame.mixer.music.set_volume(int(value)/100))
-slider.config(bg="#000000",fg="green",troughcolor="#000000")
-slider.set(50)
+# slider = tk.Scale(window,from_=0, to=100,orient=tk.HORIZONTAL,command=lambda value:)
+# slider.config(bg="#000000",fg="green",troughcolor="#000000")
+# slider.set(50)
+label = tk.Label(text="Volume",padx=30,bg="#000000",fg="green")
+slider=sl.SliderApp(window,"green")
+slider.bind(lambda value :editSoundVolume(label,value))
 
 
 
@@ -121,8 +125,8 @@ canvas2.pack()
 canvas.pack()
 canvas3.pack()
 canvas4.pack()
-slider.pack(side=tk.BOTTOM,anchor=tk.SE)
-tk.Label(text="Volume",padx=30,bg="#000000",fg="green").pack(side=tk.BOTTOM,anchor=tk.SE)
+slider.canvas.pack(pady=10)
+label.pack()
 update3(window,canvas3)
 update4(window,canvas4)
 
@@ -135,3 +139,5 @@ canvas4.bind('<Enter>', lambda event: p.on_enter2(event,canvas4))
 canvas4.bind('<Leave>', lambda event: p.on_leave2(event,canvas4))
 canvas4.bind('<Motion>', lambda event: p.on_motion2(event,canvas4))
 canvas4.bind('<Button-1>', lambda event: p.on_click2(event,window, canvas4,isPaused,start,canvas))
+
+window.mainloop()
