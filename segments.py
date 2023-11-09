@@ -82,6 +82,12 @@ def textToTable(letter):
             return [0,1,1,1,1,1,0,0,0,0,0,0,0,0]
         case "M":
             return [0,1,1,0,1,1,0,0,1,0,1,0,0,0]
+        case "V":
+            return [0,0,0,0,1,1,0,0,0,0,1,1,0,0]
+        case "U":
+            return [0,1,1,1,1,0,0,0,0,0,0,0,0,0]
+        case "L":
+            return [0,0,0,1,1,1,0,0,0,0,0,0,0,0]
 
 
 def seven_segment_display_digit(canvas,left_pos_x,left_pos_y,truthTable):
@@ -155,3 +161,7 @@ def timeToSegmentConvertable(seconds):
 def wordToSegmentDisplay(canvas,word,x,y,color):
     for i in range(len(word)):
         fourteen_segment_display_letter_small(canvas,x + i*50,y,textToTable(word[i]),color)
+
+def numberToSmallSegmentDisplay(canvas,word,x,y):
+    for i in range(len(str(word))):
+        seven_segment_display_digit_small(canvas,x + i*50,y,digitToTable(int(str(word)[i])))

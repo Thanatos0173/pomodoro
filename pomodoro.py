@@ -84,8 +84,13 @@ def clockwatch(window,duration,canvas,isPaused):
 
 
 def editSoundVolume(label, value):
-    pygame.mixer.music.set_volume(value)
+    canvas5.delete("all")
+    pygame.mixer.music.set_volume(value/100)
     label.config(text=f"Current volume  {value}")
+    s.wordToSegmentDisplay(canvas5,"VOLUME",0,5,"green")
+    canvas5.create_oval(300,15,305,20,fill="green",outline="green",width=1)
+    canvas5.create_oval(300,45,305,50,fill="green",outline="green",width=1)
+    s.numberToSmallSegmentDisplay(canvas5,value,330,5)
 
 def start(window,canvas,isPaused):
     while True:
@@ -111,6 +116,9 @@ canvas3 = tk.Canvas(window,width=570,height=110)
 canvas3.config(bg="#000000")
 canvas4 = tk.Canvas(window,width=570,height=110)
 canvas4.config(bg="#000000")
+canvas5 = tk.Canvas(window,width=570,height=110)
+canvas5.config(bg="#000000")
+
 # slider = tk.Scale(window,from_=0, to=100,orient=tk.HORIZONTAL,command=lambda value:)
 # slider.config(bg="#000000",fg="green",troughcolor="#000000")
 # slider.set(50)
@@ -126,7 +134,8 @@ canvas.pack()
 canvas3.pack()
 canvas4.pack()
 slider.canvas.pack(pady=10)
-label.pack()
+canvas5.pack()
+#label.pack()
 update3(window,canvas3)
 update4(window,canvas4)
 
