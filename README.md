@@ -20,5 +20,5 @@ A better display
 
 (The repositories are mirrored).
 
-[Github Repository](https://gitlab.com/Thanatos_0173/pomodoro)
-[Gitlab Repository](https://github.com/Thanatos0173/pomodoro)
+[Gitlab Repository](https://gitlab.com/Thanatos_0173/pomodoro)\
+[Github Repository](https://github.com/Thanatos0173/pomodoro)
