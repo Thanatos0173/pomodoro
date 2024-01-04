@@ -16,3 +16,9 @@ On the right-botton corner, a slider is here to change the volume.
 A command to launch the pomodoro (linux only).
 A better display
 
+### Repositories
+
+(The repositories are mirrored).
+
+[Github Repository](https://gitlab.com/Thanatos_0173/pomodoro)
+[Gitlab Repository](https://github.com/Thanatos0173/pomodoro)
