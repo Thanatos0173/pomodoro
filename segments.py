@@ -28,10 +28,10 @@ def fourteen_segment_display_all_small(canvas,left_pos_x,left_pos_y):
     canvas.create_rectangle(left_pos_x+5,left_pos_y+55,left_pos_x+30,left_pos_y+60,fill = "green")
     canvas.create_rectangle(left_pos_x+30,left_pos_y,left_pos_x+35,left_pos_y+25,fill = "green")
     canvas.create_rectangle(left_pos_x+30,left_pos_y+30,left_pos_x+35,left_pos_y+55,fill = "green")
-    canvas.create_line(left_pos_x+7,left_pos_y+3,left_pos_x+13,left_pos_y+23,fill = "green",width=3)
-    canvas.create_line(left_pos_x+7,left_pos_y+53,left_pos_x+13,left_pos_y+33,fill = "green",width=3)
-    canvas.create_line(left_pos_x+27,left_pos_y+3,left_pos_x+22,left_pos_y+23,fill = "green",width=3)
-    canvas.create_line(left_pos_x+27,left_pos_y+53,left_pos_x+22,left_pos_y+33,fill = "green",width=3)
+    canvas.create_line(left_pos_x+6,left_pos_y-1,left_pos_x+14,left_pos_y+28,fill = "green",width=5)
+    canvas.create_line(left_pos_x+6,left_pos_y+53,left_pos_x+15,left_pos_y+33,fill = "green",width=5)
+    canvas.create_line(left_pos_x+30,left_pos_y-1,left_pos_x+22,left_pos_y+25,fill = "green",width=5)
+    canvas.create_line(left_pos_x+27,left_pos_y+53,left_pos_x+22,left_pos_y+33,fill = "green",width=5)
 
 #===========================================================================
 

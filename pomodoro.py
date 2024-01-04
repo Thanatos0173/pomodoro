@@ -1,10 +1,23 @@
+import sys
+import os
+
+
+def blockPrint():
+    sys.stdout = open(os.devnull, 'w')
+
+# Restore
+def enablePrint():
+    sys.stdout = sys.__stdout__
+# To avoid the greeting message from pygame
+blockPrint()
 import tkinter as tk
 import time
 import segments as s
 import sounds as so
 import pause as p
-import pygame
 import slider as sl
+import pygame
+enablePrint()
 
 
 
